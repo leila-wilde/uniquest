@@ -33,7 +33,7 @@ cd uniquest
 🎉 That’s it 🎉
 
 ## 📬 Contact
-**Developers**: Leila Wilde Daria Marchenko & Mathieu Auger
+**Developers**: Leila Wilde, Daria Marchenko & Mathieu Auger
 
 **Email**: [leila.wilde@laplateforme.com](mailto:leila.wilde@laplateforme.com) | [daria.marchenko@laplateforme.io](mailto:daria.marchenko@laplateforme.io)
 | [mathieu.auger@laplateforme.io](mailto:mathieu.auger@laplateforme.io)
@@ -79,7 +79,7 @@ cd uniquest
 ### ⚠️ Dépannage
 
 ## 📬 Contact
-**Developers**: Leila Wilde Daria Marchenko & Mathieu Auger
+**Developers**: Leila Wilde, Daria Marchenko & Mathieu Auger
 
 **Email**: [leila.wilde@laplateforme.com](mailto:leila.wilde@laplateforme.com) | [daria.marchenko@laplateforme.io](mailto:daria.marchenko@laplateforme.io)
 | [mathieu.auger@laplateforme.io](mailto:mathieu.auger@laplateforme.io)
