@@ -1,0 +1,84 @@
+@startuml Uniquest_Core_Class_Diagram
+
+skinparam classAttributeIconSize 0
+
+abstract class Character {
+  - string name
+  - float maxHP
+  - float currentHP
+  - float maxMP
+  - float currentMP
+  - int attack
+  - int defense
+  - int speed
+
+  + {abstract} PerformAction()
+  + virtual TakeDamage(float damageAmount): bool
+  + GetStatus(): CharacterStatus
+}
+
+class PlayerCharacter {
+  - Inventory inventory
+  - List<Skill> skills
+  
+  + UseItem(Item item)
+  + LevelUp()
+  + SwapCharacter()
+}
+
+class EnemyCharacter {
+  - EnemyType type
+  - AIBehavior aiBehavior
+  
+  + ChooseAction(): Action
+  + GenerateReward()
+}
+
+class BattleSystem {
+  - List<Character> participants
+  - BattleState currentState
+  
+  + StartBattle()
+  + ExecuteTurn()
+  + CheckBattleOutcome(): BattleResult
+}
+
+class GameManager {
+  - SaveData currentSaveData
+  - SceneManagement sceneManager
+  
+  + SaveGame()
+  + LoadGame()
+  + ChangeScene()
+}
+
+class Inventory {
+  - List<Item> items
+  
+  + AddItem(Item item)
+  + RemoveItem(Item item)
+  + UseItem(Item item)
+}
+
+enum BattleState {
+  START
+  PLAYER_TURN
+  ENEMY_TURN
+  WON
+  LOST
+}
+
+' Inheritance Relationships
+Character <|-- PlayerCharacter
+Character <|-- EnemyCharacter
+
+' Composition Relationships
+BattleSystem "1" *-- "*" Character
+GameManager "1" o-- "1" BattleSystem
+PlayerCharacter "1" *-- "1" Inventory
+
+' Associations
+BattleSystem --> BattleState
+GameManager --> BattleState
+
+@enduml
