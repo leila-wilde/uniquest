@@ -1,4 +1,7 @@
+// using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,5 +28,14 @@ public class PlayerMovement : MonoBehaviour
     {
         // On applique le mouvement au Rigidbody
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Debug.Log("joueur touche le dragon");
+            SceneManager.LoadScene("BattleScene", LoadSceneMode.Single);
+        }
     }
 }
