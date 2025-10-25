@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovements : MonoBehaviour
 {
     public float moveSpeed = 5f;        // Vitesse de déplacement
     private Rigidbody2D rb;             // Référence au Rigidbody2D

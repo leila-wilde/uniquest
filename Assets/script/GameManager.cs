@@ -6,6 +6,12 @@ using System.Collections;            // pour TextMeshPro
 public class BattleManager : MonoBehaviour
 {
     private bool isPlayerTurn = true;
+    [Header("Barre de vie")]
+    public Slider playerHealthBar;
+    public Slider enemyHealthBar;
+
+    public Image playerHealthFill;
+    public Image enemyHealthFill;
 
     [Header("Références du joueur")]
     public int playerHealth = 100;
@@ -24,14 +30,42 @@ public class BattleManager : MonoBehaviour
 
     void Start()
     {
+        playerHealthBar.maxValue = playerHealth;
+        playerHealthBar.value = playerHealth;
+
+        enemyHealthBar.maxValue = enemyHealth;
+        enemyHealthBar.value = enemyHealth;
+
         // Lier les fonctions aux boutons
         Button.onClick.AddListener(OnAttack);
         Button2.onClick.AddListener(OnAttack);
-        Button3.onClick.AddListener(OnMagicAttack);
+        Button3.onClick.AddListener(OnAttack3);
         Button4.onClick.AddListener(OnMagicAttack);
 
         infoText.text = "Choisissez une action !";
     }
+
+    void UpdateHealthBarColor(Slider healthBar, Image fillImage)
+{
+    float healthPercent = healthBar.value / healthBar.maxValue;
+
+    // Définir les couleurs aux différents niveaux
+    Color green = Color.green;
+    Color orange = new Color(1f, 0.5f, 0f); // orange
+    Color red = Color.red;
+
+    // Interpolation : vert -> orange -> rouge
+    if (healthPercent > 0.5f)
+    {
+        // De vert à orange entre 100% et 50%
+        fillImage.color = Color.Lerp(orange, green, (healthPercent - 0.5f) * 2f);
+    }
+    else
+    {
+        // De orange à rouge entre 50% et 0%
+        fillImage.color = Color.Lerp(red, orange, healthPercent * 2f);
+    }
+}
 
     void OnAttack()
     {
@@ -40,11 +74,13 @@ public class BattleManager : MonoBehaviour
         int damage = playerStrength;
 
         enemyHealth -= damage;
+        enemyHealthBar.value = enemyHealth;
+        UpdateHealthBarColor(enemyHealthBar, enemyHealthFill);
 
         infoText.text = $"Attaque physique inflige {damage} dégâts ! (PV ennemi : {enemyHealth})";
 
         CheckEnemyDeath();
-        
+
         if (enemyHealth > 0)
         {
             isPlayerTurn = false;
@@ -52,17 +88,31 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    void OnAttack3()
+    {
+        infoText.text = "Gros Noob du feu contre du feu ca marche pas";
+
+        if (enemyHealth > 0)
+        {
+            isPlayerTurn = false;
+            StartCoroutine(EnemyTurn());
+        }
+    }
     void OnMagicAttack()
     {
         if (!isPlayerTurn) return;
 
         int manaCost = 10;
+
         int damage = playerStrength + 10;
 
         if (playerMana >= manaCost)
         {
             playerMana -= manaCost;
+
             enemyHealth -= damage;
+            enemyHealthBar.value = enemyHealth;
+            UpdateHealthBarColor(enemyHealthBar, enemyHealthFill);
 
             infoText.text = $"Attaque magique inflige {damage} dégâts ! (Mana : {playerMana}, PV ennemi : {enemyHealth})";
             CheckEnemyDeath();
@@ -90,8 +140,11 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        int enemyDamage = Random.Range(5, 30);
+        int enemyDamage = Random.Range(10, 30);
+
         playerHealth -= enemyDamage;
+        playerHealthBar.value = playerHealth;
+        UpdateHealthBarColor(playerHealthBar, playerHealthFill);
 
         infoText.text = $"L'ennemi attaque et inflige {enemyDamage} dégâts ! (PV joueur : {playerHealth})";
 
