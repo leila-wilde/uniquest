@@ -8,13 +8,13 @@
 ## How to Run Tests
 
 ### Option 1: Unity Test Runner (Easiest)
-1. In Unity Editor, go to **Window → Testing → Test Runner**
+1. In Unity Editor, go to **Window → General → Test Runner**
 2. Click **EditMode** tab
 3. Click **Run All** button
 4. Watch tests execute and see results
 
 ### Option 2: Run Individual Test
-1. Open Test Runner (Window → Testing → Test Runner)
+1. Open Test Runner (Window → General → Test Runner)
 2. Click on any specific test name
 3. Click the play icon next to it
 
@@ -102,13 +102,13 @@ Assert.Throws<Exception>(() => { ... });  // Check exception
 ## Як запустити тести
 
 ### Варіант 1: Unity Test Runner (найпростіше)
-1. У Unity Editor перейдіть до **Window → Testing → Test Runner**
+1. У Unity Editor перейдіть до **Window → General → Test Runner**
 2. Клацніть вкладку **EditMode**
 3. Клацніть кнопку **Run All**
 4. Спостерігайте виконання тестів та результати
 
 ### Варіант 2: Запуск окремого тесту
-1. Відкрийте Test Runner (Window → Testing → Test Runner)
+1. Відкрийте Test Runner (Window → General → Test Runner)
 2. Клацніть на будь-якій назві тесту
 3. Клацніть значок відтворення поруч із ним
 
