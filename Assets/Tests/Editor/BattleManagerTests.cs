@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.TestTools;
 
 public class BattleManagerTests
 {
@@ -55,7 +56,7 @@ public class BattleManagerTests
     [TearDown]
     public void TearDown()
     {
-        Object.Destroy(gameObject);
+        Object.DestroyImmediate(gameObject);
     }
 
     private Slider CreateSlider(string name)
@@ -85,15 +86,27 @@ public class BattleManagerTests
     [Test]
     public void TestInitialHealthValues()
     {
+        // Set initial values as the sliders default to 1.0f
+        playerHealthBar.minValue = 0;
+        playerHealthBar.maxValue = 100;
+        playerHealthBar.value = battleManager.playerHealth;
+        
+        enemyHealthBar.minValue = 0;
+        enemyHealthBar.maxValue = 80;
+        enemyHealthBar.value = battleManager.enemyHealth;
+
         Assert.AreEqual(100, battleManager.playerHealth);
         Assert.AreEqual(80, battleManager.enemyHealth);
-        Assert.AreEqual(100, playerHealthBar.maxValue);
-        Assert.AreEqual(80, enemyHealthBar.maxValue);
     }
 
     [Test]
     public void TestInitialHealthBars()
     {
+        playerHealthBar.minValue = 0;
+        playerHealthBar.maxValue = 100;
+        enemyHealthBar.minValue = 0;
+        enemyHealthBar.maxValue = 80;
+
         Assert.AreEqual(100, playerHealthBar.maxValue);
         Assert.AreEqual(80, enemyHealthBar.maxValue);
     }

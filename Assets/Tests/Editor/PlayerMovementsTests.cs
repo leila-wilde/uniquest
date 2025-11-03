@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 public class PlayerMovementsTests
 {
@@ -22,7 +23,7 @@ public class PlayerMovementsTests
     [TearDown]
     public void TearDown()
     {
-        Object.Destroy(playerObject);
+        Object.DestroyImmediate(playerObject);
     }
 
     [Test]
@@ -115,10 +116,10 @@ public class PlayerMovementsTests
     public void TestVelocityCalculation()
     {
         float moveSpeed = 5f;
-        float deltaTime = 0.02f; // Typical fixed timestep
+        float deltaTime = 0.02f;
         float distance = moveSpeed * deltaTime;
 
-        Assert.AreEqual(0.1f, distance);
+        Assert.AreEqual(0.1f, distance, 0.001f);
     }
 
     [Test]
