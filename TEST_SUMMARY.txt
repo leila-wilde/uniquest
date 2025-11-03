@@ -1,0 +1,92 @@
+================================================================================
+UNIT TESTS ADDED TO YOUR UNITY GAME
+================================================================================
+
+✅ TESTS CREATED:
+  - BattleManagerTests.cs (15 tests)
+  - PlayerMovementsTests.cs (14 tests)
+  Total: 29 unit tests
+
+✅ FILES ADDED:
+  Assets/Tests/Editor/BattleManagerTests.cs
+  Assets/Tests/Editor/PlayerMovementsTests.cs
+  Assets/Tests/README.md
+  TESTING.md (Quick start guide)
+  TESTING_BEST_PRACTICES.md (Best practices guide)
+
+================================================================================
+HOW TO RUN TESTS IN UNITY:
+================================================================================
+
+1. Open your project in Unity Editor
+2. Go to: Window → Testing → Test Runner
+3. Select "EditMode" tab
+4. Click "Run All" button
+5. Watch tests execute in the Test Runner window
+
+Alternative: Click on individual tests to run them separately
+
+================================================================================
+WHAT'S TESTED:
+================================================================================
+
+BATTLE SYSTEM (BattleManagerTests):
+  ✓ Initial health values (player: 100, enemy: 80)
+  ✓ Initial mana values (player: 50)
+  ✓ Health bar initialization
+  ✓ Damage calculations
+  ✓ Mana cost for magic attacks
+  ✓ Magic attack damage (strength + 10)
+  ✓ Enemy health reduction
+  ✓ Player health reduction
+  ✓ Mana availability checks
+  ✓ Victory conditions (enemy defeated)
+  ✓ Defeat conditions (player defeated)
+  ✓ Multiple mana spends
+  ✓ Attack damage values
+  ✓ Enemy damage range (10-30)
+
+PLAYER MOVEMENT (PlayerMovementsTests):
+  ✓ Default movement speed (5f)
+  ✓ Component initialization
+  ✓ Rigidbody2D existence
+  ✓ Speed modification capability
+  ✓ Speed bounds validation
+  ✓ Movement vector calculations
+  ✓ Position tracking
+  ✓ Collision detection setup
+  ✓ Physics configuration
+
+================================================================================
+FRAMEWORK USED:
+================================================================================
+
+- NUnit (included with Unity Test Framework)
+- Unity Test Framework 1.5.1 (already in your project)
+- Test Platform: Editor Mode (no scene needed)
+
+================================================================================
+NEXT STEPS:
+================================================================================
+
+1. Run the tests to verify they work
+2. Add tests for other scripts:
+   - EnemyDetection.cs
+   - IntroDialogue.cs
+   - EndDialogue.cs
+   - Quitapp.cs
+
+3. Consider refactoring coroutines for better testability
+4. Aim for 70%+ code coverage
+
+================================================================================
+HELPFUL RESOURCES:
+================================================================================
+
+- Read: TESTING.md for quick start guide
+- Read: TESTING_BEST_PRACTICES.md for detailed practices
+- Read: Assets/Tests/README.md for test file documentation
+
+All documentation files are located in the project root.
+
+================================================================================
