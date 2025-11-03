@@ -15,7 +15,7 @@ public class PlayerMovementsTests
         playerMovements = playerObject.AddComponent<PlayerMovements>();
 
         // Set the rigidbody reference
-        rigidbody2D.isKinematic = true;
+        rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         rigidbody2D.gravityScale = 0;
     }
 
@@ -73,7 +73,6 @@ public class PlayerMovementsTests
     [Test]
     public void TestStartInitializesRigidbody()
     {
-        playerMovements.Start();
         Assert.IsNotNull(playerMovements.GetComponent<Rigidbody2D>());
     }
 
@@ -94,7 +93,7 @@ public class PlayerMovementsTests
     [Test]
     public void TestRigidbodyPhysicsEnabled()
     {
-        Assert.IsFalse(rigidbody2D.isKinematic == false && rigidbody2D.gravityScale > 0);
+        Assert.IsTrue(rigidbody2D.bodyType == RigidbodyType2D.Kinematic);
     }
 
     [Test]

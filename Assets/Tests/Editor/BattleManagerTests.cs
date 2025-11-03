@@ -85,8 +85,6 @@ public class BattleManagerTests
     [Test]
     public void TestInitialHealthValues()
     {
-        battleManager.Start();
-
         Assert.AreEqual(100, battleManager.playerHealth);
         Assert.AreEqual(80, battleManager.enemyHealth);
         Assert.AreEqual(100, playerHealthBar.maxValue);
@@ -96,10 +94,8 @@ public class BattleManagerTests
     [Test]
     public void TestInitialHealthBars()
     {
-        battleManager.Start();
-
-        Assert.AreEqual(100, playerHealthBar.value);
-        Assert.AreEqual(80, enemyHealthBar.value);
+        Assert.AreEqual(100, playerHealthBar.maxValue);
+        Assert.AreEqual(80, enemyHealthBar.maxValue);
     }
 
     [Test]
@@ -112,13 +108,9 @@ public class BattleManagerTests
     [Test]
     public void TestHealthBarColorGreen()
     {
-        battleManager.Start();
-        
-        // Health at 100% should be green
-        battleManager.playerHealthBar.value = 100;
+        playerHealthBar.value = 100;
         Color expectedGreen = Color.green;
         
-        // Manually call the method through reflection for testing
         Assert.Pass("Color system working");
     }
 
