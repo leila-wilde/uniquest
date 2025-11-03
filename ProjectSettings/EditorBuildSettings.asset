@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/BattleScene.unity
+    guid: e42732e55223146408f3e8cecef593a3
+  - enabled: 1
+    path: Assets/Scenes/EndGameScene.unity
+    guid: d03f9bdb8c08f3446bee3928b23a574a
+  - enabled: 1
+    path: Assets/Scenes/Mount Owen.unity
+    guid: 03eacce4453fbcc4896ab152bc50c049
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

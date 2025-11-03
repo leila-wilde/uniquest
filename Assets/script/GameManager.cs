@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;      // pour les boutons
 using TMPro;
-using System.Collections;            // pour TextMeshPro
+using UnityEngine.SceneManagement;
+using System.Collections;
+
+// using System.Net;            // pour TextMeshPro
 
 public class BattleManager : MonoBehaviour
 {
+
     private bool isPlayerTurn = true;
     [Header("Barre de vie")]
     public Slider playerHealthBar;
@@ -46,26 +50,26 @@ public class BattleManager : MonoBehaviour
     }
 
     void UpdateHealthBarColor(Slider healthBar, Image fillImage)
-{
-    float healthPercent = healthBar.value / healthBar.maxValue;
-
-    // Définir les couleurs aux différents niveaux
-    Color green = Color.green;
-    Color orange = new Color(1f, 0.5f, 0f); // orange
-    Color red = Color.red;
-
-    // Interpolation : vert -> orange -> rouge
-    if (healthPercent > 0.5f)
     {
-        // De vert à orange entre 100% et 50%
-        fillImage.color = Color.Lerp(orange, green, (healthPercent - 0.5f) * 2f);
+        float healthPercent = healthBar.value / healthBar.maxValue;
+
+        // Définir les couleurs aux différents niveaux
+        Color green = Color.green;
+        Color orange = new Color(1f, 0.5f, 0f); // orange
+        Color red = Color.red;
+
+        // Interpolation : vert -> orange -> rouge
+        if (healthPercent > 0.5f)
+        {
+            // De vert à orange entre 100% et 50%
+            fillImage.color = Color.Lerp(orange, green, (healthPercent - 0.5f) * 2f);
+        }
+        else
+        {
+            // De orange à rouge entre 50% et 0%
+            fillImage.color = Color.Lerp(red, orange, healthPercent * 2f);
+        }
     }
-    else
-    {
-        // De orange à rouge entre 50% et 0%
-        fillImage.color = Color.Lerp(red, orange, healthPercent * 2f);
-    }
-}
 
     void OnAttack()
     {
@@ -158,10 +162,23 @@ public class BattleManager : MonoBehaviour
             infoText.text += "\nChoisissez une action !";
         }
     }
+    void Awake()
+    {
+    DontDestroyOnLoad(gameObject);
+    }
     IEnumerator EndBattle()
     {
         yield return new WaitForSeconds(2f);
-        
-        Application.Quit();
+
+        SceneManager.LoadScene("EndGameScene", LoadSceneMode.Single);
+
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene("Mount Owen", LoadSceneMode.Single);
+
+        yield return new WaitForSeconds(3f);
+
+
     }
 }
+
