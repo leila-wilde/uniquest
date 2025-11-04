@@ -5,13 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
-[System.Serializable]
-public class DialogueLine
-{
-    public string speaker;
-    public GameObject text;
-}
-
 public class EndDialogueTests
 {
     private EndDialogue endDialogue;
